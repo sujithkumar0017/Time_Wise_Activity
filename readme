@@ -1,0 +1,39 @@
+Generic single-database configuration.
+### Python > 3.10.0
+```sh
+# start the dev server
+uvicorn main:app --reload 
+```
+
+#### Python initial command
+```sh
+# create virtual env if not exists
+python -m venv venv 
+
+# activate virtual env
+source venv/bin/activate 
+
+# install packages
+pip install -r requirements.txt 
+```
+
+#### Alembic commands
+```sh
+# initialise alembic if not exists
+alembic init ./db/migrations 
+
+# create a revision / migration
+alembic revision -m "create users table"
+
+# make migration
+alembic upgrade head
+
+# downgrade N migrations
+alembic downgrade +N
+
+# to downgrade last 2 revisions
+alembic downgrade -2  
+
+# downgrade all migrations
+alembic downgrade base 
+```
